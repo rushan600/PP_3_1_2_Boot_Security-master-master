@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Page</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Welcome, <span th:text="${#authentication.principal.username}"></span>!</h1>
+    <p><a th:href="@{/logout}">Logout</a></p>
+
+    <h2>Your Information</h2>
+    <ul>
+        <li><strong>Username:</strong> <span th:text="${#authentication.principal.username}"></span></li>
+        <li><strong>Email:</strong> <span th:text="${#authentication.principal.email}"></span></li>
+        <li><strong>Age:</strong> <span th:text="${#authentication.principal.age}"></span></li>
+        <li><strong>Roles:</strong>
+            <span th:each="role : ${#authentication.principal.authorities}" th:text="${role.authority}"></span>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
